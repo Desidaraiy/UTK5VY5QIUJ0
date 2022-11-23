@@ -1,0 +1,74 @@
+[
+    {
+        "title": "Помидоры, 1кг",
+        "media_image": "https://storage.delikateska.ru/cache/b/0/na-vetke_d1.jpg/w400h300.jpg",
+        "big_price": "210",
+        "price": "105",
+        "subtitle": "«Слата», Б-р Рябикова, 200Б",
+        "distance": "235"
+    },
+    {
+        "title": "Огурцы, 1кг",
+        "media_image": "https://apeti.ru/upload/resize_cache/iblock/f1a/600_400_2/ogurtsy_lukhovitskie_1_kg.jpg",
+        "big_price": "250",
+        "price": "134",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Говядина, 1кг",
+        "media_image": "https://xn--80aaa3bejwpj.xn--p1ai/files/products/raw-beef-120507.700x422.jpg",
+        "big_price": "512",
+        "price": "360",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Помидоры, 1кг",
+        "media_image": "https://storage.delikateska.ru/cache/b/0/na-vetke_d1.jpg/w400h300.jpg",
+        "big_price": "210",
+        "price": "105",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Огурцы, 1кг",
+        "media_image": "https://apeti.ru/upload/resize_cache/iblock/f1a/600_400_2/ogurtsy_lukhovitskie_1_kg.jpg",
+        "big_price": "250",
+        "price": "134",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Говядина, 1кг",
+        "media_image": "https://xn--80aaa3bejwpj.xn--p1ai/files/products/raw-beef-120507.700x422.jpg",
+        "big_price": "512",
+        "price": "360",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Помидоры, 1кг",
+        "media_image": "https://storage.delikateska.ru/cache/b/0/na-vetke_d1.jpg/w400h300.jpg",
+        "big_price": "210",
+        "price": "105",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Огурцы, 1кг",
+        "media_image": "https://apeti.ru/upload/resize_cache/iblock/f1a/600_400_2/ogurtsy_lukhovitskie_1_kg.jpg",
+        "big_price": "250",
+        "price": "134",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    },
+    {
+        "title": "Говядина, 1кг",
+        "media_image": "https://xn--80aaa3bejwpj.xn--p1ai/files/products/raw-beef-120507.700x422.jpg",
+        "big_price": "512",
+        "price": "360",
+        "subtitle": "«Слата», Б-р Рябикова, 20Б",
+        "distance": "250"
+    }
+]

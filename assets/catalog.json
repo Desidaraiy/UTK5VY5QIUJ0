@@ -1,0 +1,212 @@
+{
+    "message": "ok",
+    "catalog": [
+        {
+            "id": 1,
+            "owner_id": 0,
+            "name": "Хлебобулочные изделия",
+            "position": 1,
+            "active": 1,
+            "subcat": [
+                {
+                    "id": 6,
+                    "owner_id": 1,
+                    "name": "Батоны",
+                    "position": 1,
+                    "active": 1,
+                    "goods": [
+                        {
+                            "id": 16,
+                            "shop_id": 1,
+                            "cat_id": 6,
+                            "name": "Ботон советкий",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 80,
+                            "price": 40,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 17,
+                            "shop_id": 1,
+                            "cat_id": 6,
+                            "name": "Ботон нежный",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 85,
+                            "price": 42,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 18,
+                            "shop_id": 1,
+                            "cat_id": 6,
+                            "name": "Багеты",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 85,
+                            "price": 42,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "owner_id": 0,
+            "name": "Мясные изделия",
+            "position": 1,
+            "active": 1,
+            "subcat": [
+                {
+                    "id": 3,
+                    "owner_id": 5,
+                    "name": "Колбасные изделия",
+                    "position": 1,
+                    "active": 1,
+                    "goods": [
+                        {
+                            "id": 8,
+                            "shop_id": 1,
+                            "cat_id": 3,
+                            "name": "Соски посольские",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 140,
+                            "price": 80,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 9,
+                            "shop_id": 1,
+                            "cat_id": 3,
+                            "name": "Соски посольские",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 140,
+                            "price": 80,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 14,
+                            "shop_id": 1,
+                            "cat_id": 3,
+                            "name": "Сосиски Молочные",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 140,
+                            "price": 80,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 15,
+                            "shop_id": 1,
+                            "cat_id": 3,
+                            "name": "Сосиски Молочные",
+                            "brand": "очень вкусные",
+                            "weight": 1,
+                            "price_old": 140,
+                            "price": 80,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "owner_id": 5,
+                    "name": "Замороженное мясо",
+                    "position": 2,
+                    "active": 1,
+                    "goods": []
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "owner_id": 0,
+            "name": "Молочная продукция",
+            "position": 1,
+            "active": 1,
+            "goods": [
+                {
+                    "id": 19,
+                    "shop_id": 1,
+                    "cat_id": 7,
+                    "name": "Молоко",
+                    "brand": "хорошее",
+                    "weight": 1,
+                    "price_old": 85,
+                    "price": 42,
+                    "godendo": "2005-09-20",
+                    "filename": "IMG_20210610_114045.jpg",
+                    "active": 1
+                },
+                {
+                    "id": 20,
+                    "shop_id": 1,
+                    "cat_id": 7,
+                    "name": "Кефир",
+                    "brand": "хорошее",
+                    "weight": 1,
+                    "price_old": 100,
+                    "price": 50,
+                    "godendo": "2005-09-20",
+                    "filename": "IMG_20210610_114045.jpg",
+                    "active": 1
+                }
+            ],
+            "subcat": [
+                {
+                    "id": 8,
+                    "owner_id": 7,
+                    "name": "Йогурты",
+                    "position": 5,
+                    "active": 1,
+                    "goods": [
+                        {
+                            "id": 21,
+                            "shop_id": 1,
+                            "cat_id": 8,
+                            "name": "Данон",
+                            "brand": "хорошее",
+                            "weight": 1,
+                            "price_old": 85,
+                            "price": 42,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        },
+                        {
+                            "id": 22,
+                            "shop_id": 2,
+                            "cat_id": 8,
+                            "name": "Хренон",
+                            "brand": "хорошее",
+                            "weight": 1,
+                            "price_old": 85,
+                            "price": 42,
+                            "godendo": "2005-09-20",
+                            "filename": "IMG_20210610_114045.jpg",
+                            "active": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+[
+    {
+        "id": 5,
+        "name": "Магнит",
+        "address": "г. Иркутск, Б-р Рябикова, 20Б",
+        "logo": "https://pushmobile.ru/markets_logo/slata.png",
+        "logoBg": "25, 179, 40",
+        "time": "09:00 - 22:30",
+        "lat_long": "52.2596591, 104.2117539"
+    }
+]

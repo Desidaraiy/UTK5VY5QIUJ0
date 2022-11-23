@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Вулкан",
+        "address": "Б-р Рябикова, 1ж",
+        "logo": "https://pushmobile.ru/markets_logo/vulkan.png",
+        "logoBg": "44, 161, 229",
+        "time": "08:00 - 22:30",
+        "lat_long": "52.261267,104.2126308"
+    },
+    {
+        "id": 2,
+        "name": "Слата",
+        "address": "Б-р Рябикова, 20Б",
+        "logo": "https://pushmobile.ru/markets_logo/slata.png",
+        "logoBg": "25, 179, 40",
+        "time": "09:00 - 22:30",
+        "lat_long": "52.2596591,104.2117539"
+    },
+    {
+        "id": 3,
+        "name": "Удача",
+        "address": "Мкрн Березовый, 113/1",
+        "logo": "https://pushmobile.ru/markets_logo/udacha.png",
+        "logoBg": "226, 179, 70",
+        "time": "10:00 - 22:30",
+        "lat_long": "52.2198351,104.2439111"
+    },
+    {
+        "id": 4,
+        "name": "Пятерочка",
+        "address": "Ул. Советская, 58/1",
+        "logo": "https://pushmobile.ru/markets_logo/pyatyorochka.png",
+        "logoBg": "194, 17, 17",
+        "time": "08:00 - 22:30",
+        "lat_long": "52.274971,104.3048974"
+    }
+]
