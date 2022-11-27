@@ -26,7 +26,6 @@ class _ItemsWidgetState extends State<ItemsWidget> {
     store.getObsMarkets().then((value) {
       store.getObsGoods();
     });
-    // store.getObsMarkets();
     super.initState();
   }
 
@@ -34,40 +33,11 @@ class _ItemsWidgetState extends State<ItemsWidget> {
   Widget build(BuildContext context) {
     final _catpage = Provider.of<CatalogViewStore>(context);
     return Container(
-      // child: Observer(
-      //   builder: (_) => FutureBuilder<List<Good>>(
-      //       future: _catpage.isSearching
-      //           ? _catpage.obsGoodsSearchResult
-      //           : _catpage.obsGoods,
-      //       builder:
-      //           (BuildContext context, AsyncSnapshot<List<Good>> snapshot) {
-      //         if (!snapshot.hasData) {
-      //           return const Center(
-      //             child: CircularProgressIndicator(),
-      //           );
-      //         }
-      //         var items = snapshot.data as List<Good>;
-      //         return snapshot.data!.isEmpty
-      //             ? Center(child: Text('Нет данных'))
-      //             : GridView.builder(
-      //                 itemCount: items == [] ? 0 : items.length,
-      //                 physics: NeverScrollableScrollPhysics(),
-      //                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //                   crossAxisCount: 2,
-      //                   childAspectRatio: (1 / 1.6),
-      //                 ),
-      //                 shrinkWrap: true,
-      //                 itemBuilder: (context, index) {
-      //                   return GoodWidget(item: items[index]);
-      //                 },
-      //               );
-      //       }),
-      // ),
       child: ObserverFuture<List<Good>, Exception>(
         retry: 3,
         autoInitialize: true,
         fetchData: () {
-          _catpage.getObsGoods;
+          _catpage.getObsGoods();
         },
         observableFuture: () => _catpage.isSearching
             ? _catpage.obsGoodsSearchResult

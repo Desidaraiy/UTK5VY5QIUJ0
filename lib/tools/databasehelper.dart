@@ -1,13 +1,9 @@
 import 'dart:convert';
-
 import 'package:demo_app/main.dart';
 import 'package:demo_app/models/catalog.dart';
-// import 'package:demo_app/models/marketModel.dart';
 import 'package:demo_app/models/shopModel.dart';
 import 'package:demo_app/store/store.dart';
 import 'package:flutter/material.dart';
-// import 'package:demo_app/models/good.dart';
-// import 'package:demo_app/models/testModel.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -18,8 +14,8 @@ import 'package:http/http.dart' as http;
 import 'dart:math' show cos, sqrt, asin;
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
-// import '../models/tmodel.dart';
 import 'package:moment_dart/moment_dart.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
 class DatabaseHelper {
   DatabaseHelper._privateConstructor();
@@ -111,16 +107,6 @@ class DatabaseHelper {
     return ret;
   }
 
-  // Future<List> getCoords() async {
-  //   Location location = new Location();
-  //   bool _serviceEnabled;
-  //   PermissionStatus _permissionGranted;
-  //   LocationData _locationData;
-  //   _locationData = await location.getLocation();
-  //   List arr = [_locationData.latitude, _locationData.longitude];
-  //   return arr;
-  // }
-
   void enablePositionService() async {
     bool permission = await Geolocator.isLocationServiceEnabled();
     Location loc = new Location();
@@ -135,109 +121,45 @@ class DatabaseHelper {
     }
   }
 
-  Future<List> _getCurrentPosition() async {
-    final hasPermission = await _handleLocationPermission();
-    if (!hasPermission) return [0, 0];
-    var pos = await Geolocator.getCurrentPosition();
-    return [pos.latitude, pos.longitude];
-  }
+  Future<List> _getCurrentLocation() async {
+    Location location = new Location();
 
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
+    List ret = [0, 0];
 
-  Future<bool> _handleRequestPerimission() async {
-    bool ret = false;
-    LocationPermission permission = await Geolocator.requestPermission();
-    if(permission != LocationPermission.denied){
-      ret = true;
-    }
-    return ret;
-  }
-
-  Future<bool> _handleLocationPermission() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-    LocationPermission permissionOne;
-    bool requested = false;
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
-    if (!serviceEnabled) {
-      return false;
-    }
-
-    permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-
-      // permissionOne = await Geolocator.requestPermission();
-      // if (permissionOne == LocationPermission.denied) {
-        // return false;
-      // }
-      requested = await _handleRequestPerimission();
-      return requested;
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      return false;
-    }
-    return true;
-  }
-
-  // Future<bool> checkGps() async {
-  //   Location location = new Location();
-  //   bool _serviceEnabled;
-  //   PermissionStatus _permissionGranted;
-  //   LocationData _locationData;
-  //   _serviceEnabled = await location.serviceEnabled();
-  //   if (!_serviceEnabled) {
-  //     _serviceEnabled = await location.requestService();
-  //     if (!_serviceEnabled) {
-  //       return false;
-  //     }
-  //   }
-  //   _permissionGranted = await location.hasPermission();
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // }
-
-  Future<bool> checkGpsService() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    permission = await Geolocator.checkPermission();
-
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        return false;
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        return ret;
       }
     }
-    if (permission == LocationPermission.deniedForever) {
-      return false;
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return ret;
+      }
     }
-
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
-    return true;
+    _locationData = await location.getLocation();
+    ret = [_locationData.latitude, _locationData.longitude];
+    return ret;
   }
 
   Future<List<Market>> getMarkets() async {
     List<Market> markets = [];
     int dist = 0;
     List myCoords = [0, 0];
-    // bool isLocationEnabled = await Geolocator.isLocationServiceEnabled();
-    // if (isLocationEnabled) {
-    myCoords = await _getCurrentPosition();
-    // }
+
+    myCoords = await _getCurrentLocation();
 
     if (store.getMarkets.isEmpty) {
       final jsondata = await _postMarkets();
       MarketResponse marketResponse = marketResponseFromJson(jsondata);
       markets = marketResponse.shops;
-      // List myCoords = await getCoords();
       markets.asMap().forEach((key, value) {
         var _sCoords = [double.parse(value.lat!), double.parse(value.lon!)];
         dist = calculateDistance(
@@ -253,15 +175,15 @@ class DatabaseHelper {
     return markets;
   }
 
-  // Future<List<Market>> checkMarkets() async {
-  //   List<Market> list = [];
-  //   if (store.getMarkets.isEmpty) {
-  //     list = await getMarkets();
-  //   } else {
-  //     list = store.getMarkets;
-  //   }
-  //   return list;
-  // }
+  Future<List<Market>> checkMarkets() async {
+    List<Market> markets = [];
+    if (store.getMarkets.isEmpty) {
+      markets = await getMarkets();
+    } else {
+      markets = store.markets;
+    }
+    return markets;
+  }
 
   Future<http.Response> _loadServer() {
     return http.post(
