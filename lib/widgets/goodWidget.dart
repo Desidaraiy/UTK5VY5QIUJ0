@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:demo_app/store/store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:animated_overflow/animated_overflow.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 class GoodWidget extends StatefulWidget {
   final Good item;
@@ -119,16 +120,6 @@ class _GoodWidgetState extends State<GoodWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Flexible(
-                //   child: Text(
-                //     "${_currentProduct.name}, ${_currentProduct.weight}кг",
-                //     overflow: TextOverflow.ellipsis,
-                //     style: TextStyle(
-                //         fontWeight: FontWeight.bold,
-                //         fontSize: 25,
-                //         color: Colors.grey.shade800),
-                //   ),
-                // ),
                 AnimatedOverflow(
                   maxWidth: c_width,
                   animatedOverflowDirection:
@@ -212,17 +203,6 @@ class _GoodWidgetState extends State<GoodWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Адрес:", style: TextStyle(fontSize: 17)),
-                // Spacer(),
-                // Flexible(
-                //   child: Text(
-                //       DatabaseHelper.instance
-                //           .getAddressOfMarket(widget.item.shopId),
-                //       overflow: TextOverflow.ellipsis,
-                //       style: TextStyle(
-                //           fontSize: 17,
-                //           fontWeight: FontWeight.w700,
-                //           color: Colors.grey.shade800)),
-                // ),
                 AnimatedOverflow(
                   animatedOverflowDirection:
                       AnimatedOverflowDirection.HORIZONTAL,
@@ -248,11 +228,12 @@ class _GoodWidgetState extends State<GoodWidget> {
   Widget build(BuildContext context) {
     final catpage = Provider.of<CatalogViewStore>(context);
     return Container(
-      padding: EdgeInsets.only(top: 15, right: 15, left: 15),
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      // padding: EdgeInsets.only(top: 15.sp, right: 15.sp, left: 15.sp),
+      padding: EdgeInsets.all(15.sp),
+      margin: EdgeInsets.symmetric(vertical: 8.sp, horizontal: 10.sp),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.sp),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -269,7 +250,7 @@ class _GoodWidgetState extends State<GoodWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(8.5.sp),
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(20),
@@ -277,7 +258,7 @@ class _GoodWidgetState extends State<GoodWidget> {
                 child: Text(
                   "-${getPercent(widget.item.priceOld, widget.item.price)}%",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 3.5.mm,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -287,45 +268,25 @@ class _GoodWidgetState extends State<GoodWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // FutureBuilder(
-                    //     future: DatabaseHelper.instance.checkGpsService(),
-                    //     builder:
-                    //         (BuildContext context, AsyncSnapshot<bool> snap) {
-                    //       if (!snap.hasData) {
-                    //         return new CircularProgressIndicator();
-                    //       }
-                    //       var checked = snap.data as bool;
-                    //       return checked
-                    //           ? const Icon(
-                    //               Icons.near_me,
-                    //               color: Colors.indigo,
-                    //             )
-                    //           : const Icon(
-                    //               Icons.near_me_disabled,
-                    //               color: Colors.indigo,
-                    //             );
-                    //     }),
                     widget.item.distance > 0
-                        ? const Icon(
-                            Icons.near_me,
-                            color: Colors.indigo,
-                          )
+                        ? const Icon(Icons.near_me,
+                            color: Colors.indigo, size: 20)
                         : IconButton(
                             onPressed: () {
                               DatabaseHelper.instance.enablePositionService();
                             },
                             icon: const Icon(
+                              size: 20,
                               Icons.near_me_disabled,
                               color: Colors.indigo,
                             ),
                           ),
-
                     widget.item.distance > 0
                         ? Text(
                             widget.item.distance < 1000
                                 ? "${widget.item.distance} м"
                                 : "${(widget.item.distance / 1000).round()} км",
-                          )
+                            style: TextStyle(fontSize: 3.5.mm))
                         : Text(""),
                   ],
                 ),
@@ -347,11 +308,10 @@ class _GoodWidgetState extends State<GoodWidget> {
               margin: EdgeInsets.all(15),
               child: widget.item.filename.isEmpty
                   ? Image.network("https://goden-do.ru/files/placeholder.jpg",
-                      height: 110, width: 110)
+                      height: 12.h)
                   : Image.network(
                       "https://goden-do.ru/app/files/${widget.item.filename}",
-                      height: 110,
-                      width: 110),
+                      height: 12.h),
             ),
           ),
           Container(
@@ -359,10 +319,10 @@ class _GoodWidgetState extends State<GoodWidget> {
             alignment: Alignment.centerLeft,
             child: Text(
               "${widget.item.name.toString()}, ${widget.item.weight.toString()}кг",
-              // maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.fade,
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 4.mm,
                 color: Colors.indigo,
                 fontWeight: FontWeight.bold,
               ),
@@ -374,10 +334,10 @@ class _GoodWidgetState extends State<GoodWidget> {
               // "${items[index].subtitle.toString()}",
               // "«Слата», Б-р Рябикова, 20Б",
               "${DatabaseHelper.instance.getFullNameOfMarket(widget.item.shopId)}",
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.fade,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 4.mm,
               ),
             ),
           ),
@@ -389,15 +349,15 @@ class _GoodWidgetState extends State<GoodWidget> {
                 Text(
                   "${widget.item.priceOld.toString()} ₽",
                   style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 3.5.mm,
+                      fontWeight: FontWeight.w700,
                       color: Colors.indigo,
                       decoration: TextDecoration.lineThrough),
                 ),
                 Text(
                   "${widget.item.price.toString()} ₽",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 4.5.mm,
                     fontWeight: FontWeight.bold,
                     color: Colors.indigo,
                   ),

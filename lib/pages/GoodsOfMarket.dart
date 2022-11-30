@@ -2,11 +2,13 @@ import 'package:demo_app/appbars/BackAppBar.dart';
 import 'package:demo_app/appbars/CustomAppBar.dart';
 import 'package:demo_app/models/catalog.dart';
 import 'package:demo_app/tools/databasehelper.dart';
+import 'package:demo_app/widgets/goodsGridWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:demo_app/store/store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:demo_app/widgets/goodWidget.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:sqflite/sqflite.dart';
 
 class GoodsOfMarket extends StatefulWidget {
@@ -71,6 +73,7 @@ class _GoodsByCatPageState extends State<GoodsOfMarket> {
           ),
         ),
         Container(
+          margin: EdgeInsets.only(top: 8.sp),
           child: FutureBuilder<List<Good>>(
               future: DatabaseHelper.instance
                   .getGoodsOfMarket(_catpage.currentShop),
@@ -84,18 +87,7 @@ class _GoodsByCatPageState extends State<GoodsOfMarket> {
                 var items = snapshot.data as List<Good>;
                 return snapshot.data!.isEmpty
                     ? Center(child: Text('Нет данных'))
-                    : GridView.builder(
-                        itemCount: items == [] ? 0 : items.length,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: (1 / 1.67),
-                        ),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return GoodWidget(item: items[index]);
-                        },
-                      );
+                    : GoodsGrid(items: items, neverScrollable: true);
               }),
         ),
       ],

@@ -1,18 +1,11 @@
-import 'package:demo_app/main.dart';
-import 'package:demo_app/tools/databasehelper.dart';
 import 'package:demo_app/widgets/goodWidget.dart';
-import 'package:demo_app/widgets/productDataModel.dart';
+import 'package:demo_app/widgets/goodsGridWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:sqflite/sqflite.dart';
-import 'package:demo_app/tools/databasehelper.dart';
 import 'package:provider/provider.dart';
 import 'package:demo_app/store/store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx_widget/mobx_widget.dart';
 import '../models/catalog.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class ItemsWidget extends StatefulWidget {
   @override
@@ -63,17 +56,9 @@ class _ItemsWidgetState extends State<ItemsWidget> {
         },
         onData: (_, data) {
           var items = data;
-          return GridView.builder(
-            itemCount: items.length,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: (1 / 1.67),
-            ),
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return GoodWidget(item: items[index]);
-            },
+          return GoodsGrid(
+            items: items,
+            neverScrollable: true,
           );
         },
         onPending: (_) => Center(

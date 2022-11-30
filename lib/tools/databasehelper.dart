@@ -122,7 +122,7 @@ class DatabaseHelper {
   }
 
   Future<List> _getCurrentLocation() async {
-    Location location = new Location();
+    Location location = Location();
 
     bool _serviceEnabled;
     PermissionStatus _permissionGranted;
@@ -144,8 +144,10 @@ class DatabaseHelper {
         return ret;
       }
     }
+
     _locationData = await location.getLocation();
     ret = [_locationData.latitude, _locationData.longitude];
+
     return ret;
   }
 
@@ -153,9 +155,7 @@ class DatabaseHelper {
     List<Market> markets = [];
     int dist = 0;
     List myCoords = [0, 0];
-
     myCoords = await _getCurrentLocation();
-
     if (store.getMarkets.isEmpty) {
       final jsondata = await _postMarkets();
       MarketResponse marketResponse = marketResponseFromJson(jsondata);
@@ -177,11 +177,13 @@ class DatabaseHelper {
 
   Future<List<Market>> checkMarkets() async {
     List<Market> markets = [];
+
     if (store.getMarkets.isEmpty) {
       markets = await getMarkets();
     } else {
       markets = store.markets;
     }
+
     return markets;
   }
 
